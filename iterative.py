@@ -3,7 +3,7 @@ from taquin import Jeu_Taquin,sous_noeuds
 
 def profondeur_iterative(etat_debut,n, max_depth):
     etat_final = []
-    for i in range(0,n+1):
+    for i in range(0,n*n):
         etat_final.append(i)
         
     etats_explores = []
@@ -14,8 +14,6 @@ def profondeur_iterative(etat_debut,n, max_depth):
         noeud = noeuds_à_explorer.pop()
         
         etats_explores.append(noeud.etat)
-        
-        #afficher(noeud)
         
         if noeud.etat == etat_final: 
             noeud_final = noeud

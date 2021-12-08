@@ -1,11 +1,12 @@
 import math
 
 class Jeu_Taquin:
-    def __init__(self, etat,parent = None, depth = 0,n = 8):
+    def __init__(self, etat,parent = None, depth = 0,n = 3,fval=0):
         self.etat = etat
         self.depth = depth
         self.parent = parent
         self.n = n
+        self.fval = fval
         
 def sous_noeuds(noeud):
 
@@ -21,13 +22,12 @@ def sous_noeuds(noeud):
     return sous_noeuds
 
 def permuter(etat, ei, ej, n): 
-    n = int(math.sqrt(n+1))
     nov_etat = etat.copy()
 
     index = nov_etat.index(0)
     index_a_permuter = index + ei*1 + ej*(-n)
     
-    if index_a_permuter in range(0,n**2) and (( ej == 0 and index_a_permuter//n == index//n) or(( ei == 0 and index_a_permuter%n == index%n))):
+    if index_a_permuter in range(0,n**2):
        temp = nov_etat[index] 
        nov_etat[index] = nov_etat[index_a_permuter] 
        nov_etat[index_a_permuter] = temp      
@@ -37,7 +37,7 @@ def permuter(etat, ei, ej, n):
 
 def afficher(noeud):  
     
-    n = int(math.sqrt(noeud.n+1))
+    n = noeud.n
     for i in range(0,n**2,n):
         print('\t'.join(str(e) for e in noeud.etat[i:i+n]))
     print("            ")

@@ -4,7 +4,7 @@ from taquin import Jeu_Taquin,sous_noeuds,afficher
 
 def largeur_dabord(etat_debut,n):
     etat_final = []
-    for i in range(0,n+1):
+    for i in range(0,n*n):
         etat_final.append(i)
         
     etats_explores = []
@@ -15,8 +15,6 @@ def largeur_dabord(etat_debut,n):
         noeud = noeuds_à_explorer.popleft()
 
         etats_explores.append(noeud.etat)
-        
-        #afficher(noeud)
         
         if noeud.etat == etat_final: 
             noeud_final = noeud
